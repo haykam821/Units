@@ -22,11 +22,11 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
           fields: [
             {
               name: "Input",
-              value: `${argument[0]} ${argument[1]}`
+              value: `${arguments[0]} ${arguments[1]}`
             },
             {
               name: "Output",
-              value: `${converted} ${argument[2]}`
+              value: `${converted} ${arguments[2]}`
             }
           ]
         }
