@@ -6,7 +6,7 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
   if (message === undefined) {
     return;
   }
-  if (message.startsWith(doc.prefix + "convert ") {
+  if (message.startsWith(doc.prefix + "convert ")) {
     bot.simulateTyping(channelID);
 
     var arguments = message.replace(doc.prefix + "convert ", "").split(" ");
