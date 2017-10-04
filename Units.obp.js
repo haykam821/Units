@@ -13,8 +13,26 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
 
     if (arguments.length < 3) {
       // some handling for missing arguments
+      bot.sendMessage({
+        to: event.d.channel_id,
+        embed: {
+          title: "Missing Arguments",
+          color: 0xdd2e44,
+          timestamp: new Date(),
+          description: ":x: You are missing arguments. You should have the amount, the unit the amount's in, and what unit you want to convert to."
+        }
+      });
     } else if (arguments.length > 3) {
       // some handling for TOO MANY arguments
+      bot.sendMessage({
+        to: event.d.channel_id,
+        embed: {
+          title: "Too Many Arguments",
+          color: 0xdd2e44,
+          timestamp: new Date(),
+          description: ":x: You have too many arguments. You should only have three."
+        }
+      });
     } else {
       try {
         var converted = convert(arguments[0]).from(arguments[1]).to(arguments[2]);
