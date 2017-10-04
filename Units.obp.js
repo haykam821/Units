@@ -11,7 +11,18 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
 
     var arguments = message.replace(doc.prefix + "convert ", "").split(" ");
 
-    if (arguments.length < 3) {
+    if (parseInt(arguments[0]) == NaN) {
+      // some handling for your number not being a number and you're a complete idiot
+      bot.sendMessage({
+        to: event.d.channel_id,
+        embed: {
+          title: "Not a Number",
+          color: 0xdd2e44,
+          timestamp: new Date(),
+          description: ":x: Your value is not a number."
+        }
+      });
+    } else if (arguments.length < 3) {
       // some handling for missing arguments
       bot.sendMessage({
         to: event.d.channel_id,
@@ -31,17 +42,6 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
           color: 0xdd2e44,
           timestamp: new Date(),
           description: ":x: You have too many arguments. You should only have three."
-        }
-      });
-    } else if (parseInt(arguments[0]) == NaN) {
-      // some handling for your number not being a number and you're a complete idiot
-      bot.sendMessage({
-        to: event.d.channel_id,
-        embed: {
-          title: "Not a Number",
-          color: 0xdd2e44,
-          timestamp: new Date(),
-          description: ":x: Your value is not a number."
         }
       });
     } else {
