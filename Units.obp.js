@@ -33,6 +33,17 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
           description: ":x: You have too many arguments. You should only have three."
         }
       });
+    } else if (parseInt(arguments[0]) == NaN) {
+      // some handling for your number not being a number and you're a complete idiot
+      bot.sendMessage({
+        to: event.d.channel_id,
+        embed: {
+          title: "Not a Number",
+          color: 0xdd2e44,
+          timestamp: new Date(),
+          description: ":x: Your value is not a number."
+        }
+      });
     } else {
       try {
         var converted = convert(arguments[0]).from(arguments[1]).to(arguments[2]);
