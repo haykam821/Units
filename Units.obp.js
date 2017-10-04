@@ -11,7 +11,7 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
 
     var arguments = message.replace(doc.prefix + "convert ", "").split(" ");
 
-    if (parseInt(arguments[0]) == NaN) {
+    if (parseInt(arguments[0]).isNaN()) {
       // some handling for your number not being a number and you're a complete idiot
       bot.sendMessage({
         to: event.d.channel_id,
