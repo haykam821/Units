@@ -78,6 +78,8 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
               description: ":x: A unit you gave is unsupported. Try its shorthand."
             }
           });
+        } else {
+          console.log(e)
         }
       }
     }
