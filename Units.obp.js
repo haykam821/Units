@@ -87,7 +87,7 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
               title: "Incompatible Measures",
               color: 0xdd2e44,
               timestamp: new Date(),
-              description: `:x: You can not convert between the incompatible measures of ${words[5]} and ${words[7]}.`
+              description: `:x: You can not convert between the incompatible measures of ${words[7]} and ${words[5]}.`
             }
           });
         } else {
