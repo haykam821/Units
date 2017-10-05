@@ -79,7 +79,16 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
             }
           });
         } else {
-          console.log(e)
+          console.log('Error while converting units', error);
+          bot.sendMessage({
+              to: channelID,
+              embed: {
+                title: 'Unknown Error',
+                color: 0xdd2e44,
+                timestamp: new Date(),
+                description: ":x: An unknown error has occurred! If this doesn't work the next time, please contact the bot owner."
+              }
+          });
         }
       }
     }
