@@ -67,8 +67,8 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
               ]
             }
         });
-      } catch (e) {
-        if (e.message.startsWith('Unsupported unit')) {
+      } catch (error) {
+        if (error.message.startsWith('Unsupported unit')) {
           bot.sendMessage({
             to: event.d.channel_id,
             embed: {
@@ -76,6 +76,18 @@ exports.onMessageReceived = (function Units(bot, doc, user, userID, channelID, m
               color: 0xdd2e44,
               timestamp: new Date(),
               description: ":x: A unit you gave is unsupported. Try its shorthand."
+            }
+          });
+        } else if (error.message.startsWith("Cannot convert incompatible measures of ")) {
+          var words = error.message.split(" ");
+
+          bot.sendMessage({
+            to: event.d.channel_id,
+            embed: {
+              title: "Incompatible Measures",
+              color: 0xdd2e44,
+              timestamp: new Date(),
+              description: `:x: You can not convert between the incompatible measures of ${words[5]} and ${words[7]}.`
             }
           });
         } else {
